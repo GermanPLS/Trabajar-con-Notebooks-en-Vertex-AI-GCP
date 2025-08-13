@@ -113,6 +113,16 @@ El espacio de trabajo de Colab Enterprise consta de cinco secciones principales 
 
 ![alt text](15.png)
 
+
+#### ¿Qué vas a ver en la gráfica?
+
+Una línea que va mostrando valores cercanos a 200 a lo largo del eje X (0 a 99).
+
+Áreas verdes rellenas debajo de la línea cuando el valor de ys está por encima de 195
+
+Visualizar claramente las partes donde la variable **ys** está sobre un umbral (195).
+
+Se **crear un ejemplo rápido de visualización de datos** usando Python, Numpy y Matplotlib.
 #
 
 ## Tarea 4. Muestra el historial de revisión
@@ -147,10 +157,14 @@ Copia el código que se muestra a continuación en la nueva celda.
 
 ## Importa las bibliotecas
 
-```
+```py
 import seaborn as sns
 import pandas as pd
 import numpy as np
+
+# Importa la librería oficial de BigQuery
+# Crea un cliente autenticado para conectarte y trabajar con BigQuery (consultas, carga de datos, administración).
+
 from google.cloud import bigquery
 bq = bigquery.Client()
 
@@ -170,8 +184,14 @@ No debería aparecer ningún resultado.
 client = bigquery.Client()
 
 query = """SELECT * FROM `bigquery-public-data.catalonian_mobile_coverage_eu.mobile_data_2015_2017` LIMIT 1000"""
+
+# job representa el trabajo de consulta, que puede tardar unos segundos en completarse.
+# Convierte el resultado a DataFrame de Pandas
+
 job = client.query(query)
 df = job.to_dataframe()
+
+# Resumen: conecta a BigQuery, ejecuta la consulta y obtiene los resultados en un DataFrame listo para análisis en Python
 
 ```
 
@@ -186,6 +206,9 @@ Por lo tanto, **%%bigquery** le indica a tu entorno que cambie al modo de BigQue
 - prepara el entorno para aceptar y ejecutar consultas de BigQuery. BigQuery ejecutará la consulta, recuperará los datos y los presentará en el entorno del notebook, a menudo, como un DataFrame de Pandas.
 
 ```
+# Ese código es otra forma de hacer consultas a BigQuery directamente desde un notebook (Colab o Jupyter) 
+# usando la “cell magic” %%bigquery.
+
 %%bigquery df
 SELECT *
 FROM `bigquery-public-data.catalonian_mobile_coverage_eu.mobile_data_2015_2017`
