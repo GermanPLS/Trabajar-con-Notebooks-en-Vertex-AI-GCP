@@ -222,14 +222,14 @@ FROM `bigquery-public-data.catalonian_mobile_coverage_eu.mobile_data_2015_2017`
 df.head()
 ```
 
-
+![alt text](23.png)
 
 ## Obtén información sobre el DataFrame de Pandas
 
 ```
 df.info()
 ```
-
+![alt text](21.png)
 
 ## Obtén estadísticas sobre el DataFrame de Pandas
 
@@ -237,7 +237,7 @@ df.info()
 df.describe()
 ```
 
-
+![alt text](22.png)
 
 
 
